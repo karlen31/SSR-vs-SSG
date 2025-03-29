@@ -1,6 +1,11 @@
 import RefreshButton from '@/app/components/RefreshButton';
 import CodeDisplay from '@/app/components/CodeDisplay';
 
+interface Post {
+    id: number;
+    title: string;
+    body: string;
+  }
 // Code examples
 const staticComponentCode = `// Static Component (page.tsx)
 interface Post {
@@ -18,7 +23,7 @@ async function StaticComponent() {
   
   return (
     <div className="space-y-4">
-      {posts.map((post) => (
+      {posts.map((post: Post) => (
         <div key={post.id}>
           <h2>{post.title}</h2>
           <p>{post.body}</p>
@@ -61,7 +66,7 @@ async function StaticComponent() {
 
   return (
     <div className="space-y-4">
-      {posts.map((post: any) => (
+      {posts.map((post: Post) => (
         <div key={post.id} className="p-4 bg-gray-800 rounded-lg shadow-lg border border-gray-700">
           <h2 className="text-xl font-bold mb-2 text-gray-100">{post.title}</h2>
           <p className="text-gray-300">{post.body}</p>

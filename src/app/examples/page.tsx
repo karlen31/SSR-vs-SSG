@@ -100,7 +100,7 @@ export default function ExamplesHome() {
               <li>Refresh each page multiple times</li>
               <li>Notice the loading states in SSR vs instant loads in SSG</li>
               <li>Check how timestamps update in SSR vs stay the same in SSG</li>
-              <li>Observe the network tab in your browser's dev tools</li>
+              <li>Observe the network tab in your browser&apos;s dev tools</li>
             </ol>
           </div>
           <div className="bg-gray-700 p-4 rounded">
