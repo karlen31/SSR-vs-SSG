@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import RefreshButton from '@/app/components/RefreshButton';
-import LoadingProgress from '@/app/components/LoadingProgress';
 import CodeDisplay from '@/app/components/CodeDisplay';
+import Loading from './loading';
 
 // Code examples
 const serverComponentCode = `// Server Component (page.tsx)
@@ -60,6 +60,12 @@ function Loading() {
 }`;
 
 // This is a Server Component by default in App Router
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
 async function ServerComponent() {
   // Fetch multiple posts to demonstrate dynamic data
   const data = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=3', {
@@ -70,7 +76,7 @@ async function ServerComponent() {
 
   return (
     <div className="space-y-4">
-      {posts.map(async (post: any, index: number) => {
+      {posts.map(async (post: Post, index: number) => {
         // Add different delays for each post
         await new Promise(resolve => setTimeout(resolve, (index + 1) * 1000));
         
@@ -94,24 +100,7 @@ async function ServerComponent() {
 }
 
 // Loading component shown while server component is loading
-function Loading() {
-  return (
-    <div className="space-y-4">
-      <div className="p-4 bg-gray-800 rounded-lg shadow-lg border border-gray-700 flex justify-center">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
-      </div>
-      {[1, 2, 3].map((i) => (
-        <div key={i} className="p-4 bg-gray-800 rounded-lg shadow-lg border border-gray-700 animate-pulse">
-          <div className="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
-          <div className="space-y-2">
-            <div className="h-4 bg-gray-700 rounded"></div>
-            <div className="h-4 bg-gray-700 rounded w-5/6"></div>
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
+
 
 export default function SSRExample() {
   return (
